@@ -6,7 +6,7 @@ import { RenderBuilderContent } from "../../components/builder";
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 
 
-export default async function Page() {
+export default async function Page(props) {
   const builderModelName = "symbol";
 
   const content = await builder
