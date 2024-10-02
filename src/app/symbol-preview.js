@@ -1,6 +1,7 @@
 // pages/edit-symbol.jsx
-import { builder } from "@builder.io/sdk";
+// import { builder } from "@builder.io/sdk";
 import { RenderBuilderContent } from "../components/builder";
+import { BuilderComponent, builder } from '@builder.io/react';
 
 // Builder Public API Key set in .env file
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
@@ -16,6 +17,7 @@ export default async function Page(props) {
       <>
         {/* Render the Builder page */}
         <RenderBuilderContent model={symbol} />
+        <BuilderComponent model={symbol} />
       </>
     );
   }
