@@ -1,10 +1,8 @@
-// pages/edit-symbol.jsx
-// import { builder } from "@builder.io/sdk";
 import { builder } from "@builder.io/sdk";
 import { RenderBuilderContent } from "../../components/builder";
 
+// Builder Public API Key set in .env file
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
-
 
 export default async function Page(props) {
   const builderModelName = "symbol";
@@ -14,7 +12,7 @@ export default async function Page(props) {
     .get(builderModelName, {
       userAttributes: {
         // Use the page path specified in the URL to fetch the content
-        urlPath: "/" + (props?.params?.page?.join("/") || ""),
+        urlPath: "/" + ((await props?.params)?.page?.join("/") || ""),
       },
     })
     // Convert the result to a promise
@@ -23,7 +21,7 @@ export default async function Page(props) {
   return (
     <>
       {/* Render the Builder page */}
-      <RenderBuilderContent content={content} model={builderModelName} options={{enrich: true}}/>
+      <RenderBuilderContent content={content} model={builderModelName} />
     </>
   );
 }
